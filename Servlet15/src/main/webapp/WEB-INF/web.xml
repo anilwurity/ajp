@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app>
+<servlet>
+<servlet-name>Add</servlet-name>
+<servlet-class>test.Add</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>Add</servlet-name>
+<url-pattern>/Add</url-pattern>
+</servlet-mapping>
+
+<servlet>
+<servlet-name>Sq</servlet-name>
+<servlet-class>test.Sq</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>Sq</servlet-name>
+<url-pattern>/Sq</url-pattern>
+</servlet-mapping>
+
+
+</web-app>
