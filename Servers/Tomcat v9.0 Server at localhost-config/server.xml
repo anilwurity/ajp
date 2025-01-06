@@ -22,8 +22,10 @@
   <!-- Security listener. Documentation at /docs/config/listeners.html
   <Listener className="org.apache.catalina.security.SecurityListener" />
   -->
-  <!-- APR library loader. Documentation at /docs/apr.html -->
-  <Listener SSLEngine="on" className="org.apache.catalina.core.AprLifecycleListener"/>
+  <!-- APR connector and OpenSSL support using Tomcat Native -->
+  <Listener className="org.apache.catalina.core.AprLifecycleListener"/>
+  <!-- OpenSSL support using FFM API from Java 22 -->
+  <!-- <Listener className="org.apache.catalina.core.OpenSSLLifecycleListener" /> -->
   <!-- Prevent memory leaks due to use of particular java/javax APIs-->
   <Listener className="org.apache.catalina.core.JreMemoryLeakPreventionListener"/>
   <Listener className="org.apache.catalina.mbeans.GlobalResourcesLifecycleListener"/>
@@ -84,7 +86,7 @@
                >
         <SSLHostConfig>
             <Certificate certificateKeystoreFile="conf/localhost-rsa.jks"
-                         type="RSA" />
+                         certificateKeystorePassword="changeit" type="RSA" />
         </SSLHostConfig>
     </Connector>
     -->
@@ -160,7 +162,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="Servlet19" path="/Servlet19" reloadable="true" source="org.eclipse.jst.jee.server:Servlet19"/></Host>
+      <Context docBase="ServletDemo" path="/ServletDemo" reloadable="true" source="org.eclipse.jst.jee.server:ServletDemo"/><Context docBase="jspdemo" path="/jspdemo" reloadable="true" source="org.eclipse.jst.jee.server:jspdemo"/><Context docBase="HeaderServlets" path="/HeaderServlets" reloadable="true" source="org.eclipse.jst.jee.server:HeaderServlets"/><Context docBase="FormData" path="/FormData" reloadable="true" source="org.eclipse.jst.jee.server:FormData"/><Context docBase="SessionDemo" path="/SessionDemo" reloadable="true" source="org.eclipse.jst.jee.server:SessionDemo"/><Context docBase="SessionTracker" path="/SessionTracker" reloadable="true" source="org.eclipse.jst.jee.server:SessionTracker"/><Context docBase="FormData2" path="/FormData2" reloadable="true" source="org.eclipse.jst.jee.server:FormData2"/><Context docBase="ShoppingCart" path="/ShoppingCart" reloadable="true" source="org.eclipse.jst.jee.server:ShoppingCart"/></Host>
     </Engine>
   </Service>
 </Server>
